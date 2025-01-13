@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "PSi/NMniJ5E=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Umer Aalam\\Documents\\Projects\\UmerEngine\\myapp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Umer Aalam\\.nuget\\packages\\csfml\\2.6.1\\csfml.2.6.1.nupkg.sha512",
+    "C:\\Users\\Umer Aalam\\.nuget\\packages\\sfml.audio\\2.6.0\\sfml.audio.2.6.0.nupkg.sha512",
+    "C:\\Users\\Umer Aalam\\.nuget\\packages\\sfml.graphics\\2.6.0\\sfml.graphics.2.6.0.nupkg.sha512",
+    "C:\\Users\\Umer Aalam\\.nuget\\packages\\sfml.net\\2.6.0\\sfml.net.2.6.0.nupkg.sha512",
+    "C:\\Users\\Umer Aalam\\.nuget\\packages\\sfml.system\\2.6.0\\sfml.system.2.6.0.nupkg.sha512",
+    "C:\\Users\\Umer Aalam\\.nuget\\packages\\sfml.window\\2.6.0\\sfml.window.2.6.0.nupkg.sha512"
+  ],
+  "logs": []
+}
