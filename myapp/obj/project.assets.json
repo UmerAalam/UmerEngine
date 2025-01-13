@@ -1081,11 +1081,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Umer Aalam\\Documents\\Projects\\UmerEngine\\myapp.csproj",
+      "projectUniqueName": "C:\\Users\\Umer Aalam\\Documents\\Projects\\UmerEngine\\myapp\\myapp.csproj",
       "projectName": "myapp",
-      "projectPath": "C:\\Users\\Umer Aalam\\Documents\\Projects\\UmerEngine\\myapp.csproj",
+      "projectPath": "C:\\Users\\Umer Aalam\\Documents\\Projects\\UmerEngine\\myapp\\myapp.csproj",
       "packagesPath": "C:\\Users\\Umer Aalam\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Umer Aalam\\Documents\\Projects\\UmerEngine\\obj\\",
+      "outputPath": "C:\\Users\\Umer Aalam\\Documents\\Projects\\UmerEngine\\myapp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
