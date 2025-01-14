@@ -3,6 +3,7 @@ using SFML.Graphics;
 using SFML.Window;
 using SFML.System;
 using System.IO.Compression;
+using MyApp.Scripts;
 class Program
 {
     static void Main()
