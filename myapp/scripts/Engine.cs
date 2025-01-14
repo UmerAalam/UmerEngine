@@ -5,7 +5,7 @@ using SFML.System;
 using MyApp.Scripts;
 public static class Engine
 {
-  
+
   static uint width = 1280;
   static uint height = 720;
   static VideoMode videoMode;
@@ -27,12 +27,11 @@ public static class Engine
   }
   public static void Update()
   {
-
     while (window.IsOpen)
     {
       window.DispatchEvents();
       window.Clear(Color.White);
-      Draw.DrawSprite(texture,);
+      Paint.Sketch("images/umer.png",Color.White,Paint.FlipMode.FlipX);
       window.Display();
       Console.WriteLine("Updating");
     }
