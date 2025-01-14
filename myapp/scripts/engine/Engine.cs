@@ -40,6 +40,7 @@ public static class Engine
         window.Clear(Color.White);
         logo.Paint();
         logo.transform.SetPosition(Transform.PositionPresets.Center);
+        logo.SetOrigin(logo.sprite,Sketch.Origin.Center);
         window.Display();
         Console.WriteLine("Updating");
       }

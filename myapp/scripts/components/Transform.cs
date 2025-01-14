@@ -5,7 +5,7 @@ using SFML.System;
 
 public class Transform
 {
-    public Vector2f location = new Vector2f(Engine.height / 2, Engine.width / 2);
+    public Vector2f location;
     public Vector2f Scale = new Vector2f(1, 1);
     public float Rotation = 0;
     public PositionPresets? PositionPreset = PositionPresets.Center;
