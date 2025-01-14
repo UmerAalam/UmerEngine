@@ -2,19 +2,20 @@ using System;
 using SFML.Graphics;
 using SFML.Window;
 using SFML.System;
-using MyApp.Scripts;
 public static class Engine
 {
-  
-  static uint width = 1280;
-  static uint height = 720;
+  public static Sketch logo = new Sketch();
   static VideoMode videoMode;
-  public static RenderWindow window;
-  public static void Evoke()
+  public static RenderWindow? window;
+  public static uint width = 1280;
+  public static uint height = 720;
+  public static void Evoke(uint screenWidth = 1280, uint screenHeight = 720, string title = "Umer Engine")
   {
     Console.WriteLine("Evoke");
+    width = screenWidth;
+    height = screenHeight;
     // Create the main window
-    videoMode = new VideoMode(width, height);
+    videoMode = new VideoMode(screenWidth, screenHeight);
     window = new RenderWindow(videoMode, "Umer Engine");
     window.Closed += (sender, e) => window.Close();
     window.SetFramerateLimit(60);
@@ -27,14 +28,21 @@ public static class Engine
   }
   public static void Update()
   {
-
-    while (window.IsOpen)
+    if (window == null)
     {
-      window.DispatchEvents();
-      window.Clear(Color.White);
-      Draw.DrawSprite(texture,);
-      window.Display();
-      Console.WriteLine("Updating");
+      Console.WriteLine("Window is null");
+      return;
+    }
+    else
+    {
+      while (window.IsOpen)
+      {
+        window.DispatchEvents();
+        window.Clear(Color.White);
+        logo.Paint("images/umer.png",new Vector2f(width/2,height/2),Color.White, Sketch.FlipMode.None,Sketch.DrawMode.Smooth, Sketch.Origin.Center);
+        window.Display();
+        Console.WriteLine("Updating");
+      }
     }
   }
   // static void Move(Sprite sprite, float moveSpeed = 2)

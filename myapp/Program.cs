@@ -10,9 +10,5 @@ class Program
         Engine.Evoke();
         Engine.Update();
     }
-    void Update()
-    {
-        
-    }
-    
+
 }
