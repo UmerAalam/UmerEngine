@@ -16,10 +16,10 @@ public class Sketch
         Flip(sprite, flip);
         SetDrawMode(sprite, drawMode);
         SetOrigin(sprite, origin);
-        sprite.Position = transform.Position;
+        sprite.Position = transform.location;
         sprite.Scale = transform.Scale;
         sprite.Rotation = transform.Rotation;
-        sprite.Origin = new Vector2f(sprite.Texture.Size.X / 2, sprite.Texture.Size.Y / 2);
+        SetOrigin(sprite, Origin.Center);
         sprite.Texture = texture;
         sprite.Color = color ?? Color.White;
         if (Engine.window != null)

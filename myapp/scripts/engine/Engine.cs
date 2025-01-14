@@ -39,7 +39,7 @@ public static class Engine
         window.DispatchEvents();
         window.Clear(Color.White);
         logo.Paint();
-        logo.transform.Position = new Vector2f(logo.transform.Position.X + 1, logo.transform.Position.Y);
+        logo.transform.location = new Vector2f(logo.transform.location.X + 1, logo.transform.location.Y);
         window.Display();
         Console.WriteLine("Updating");
       }
