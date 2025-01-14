@@ -16,10 +16,9 @@ public static class Engine
     height = screenHeight;
     // Create the main window
     videoMode = new VideoMode(screenWidth, screenHeight);
-    window = new RenderWindow(videoMode, "Umer Engine");
+    window = new RenderWindow(videoMode,title);
     window.Closed += (sender, e) => window.Close();
     window.SetFramerateLimit(60);
-    window.SetVerticalSyncEnabled(true);
   }
   public static void Begin()
   {
@@ -39,7 +38,8 @@ public static class Engine
       {
         window.DispatchEvents();
         window.Clear(Color.White);
-        logo.Paint("images/umer.png",new Vector2f(width/2,height/2),Color.White, Sketch.FlipMode.None,Sketch.DrawMode.Smooth, Sketch.Origin.Center);
+        logo.Paint();
+        logo.transform.Position = new Vector2f(logo.transform.Position.X + 1, logo.transform.Position.Y);
         window.Display();
         Console.WriteLine("Updating");
       }

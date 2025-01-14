@@ -1,19 +1,24 @@
 using System;
 using SFML.Graphics;
-using SFML.Window;
 using SFML.System;
-using SFML.Graphics.Glsl;
 public class Sketch
 {
-    public void Paint(string texturePath, Vector2f? Position, Color? color, FlipMode flip = FlipMode.None, DrawMode drawMode = DrawMode.Smooth, Origin origin = Origin.Center)
+    public Transform transform = new Transform();
+    string texturePath = "images/umer.png";
+    Color? color= Color.White;
+    FlipMode flip = FlipMode.None;
+    DrawMode drawMode= DrawMode.Smooth;
+    Origin origin= Origin.Center;
+    public void Paint()
     {
         Texture texture = new Texture(texturePath);
         Sprite sprite = new Sprite(texture);
         Flip(sprite, flip);
         SetDrawMode(sprite, drawMode);
         SetOrigin(sprite, origin);
-        if(Position != null)
-        sprite.Position = Position ?? new Vector2f(Engine.height / 2, Engine.width / 2);
+        sprite.Position = transform.Position;
+        sprite.Scale = transform.Scale;
+        sprite.Rotation = transform.Rotation;
         sprite.Origin = new Vector2f(sprite.Texture.Size.X / 2, sprite.Texture.Size.Y / 2);
         sprite.Texture = texture;
         sprite.Color = color ?? Color.White;

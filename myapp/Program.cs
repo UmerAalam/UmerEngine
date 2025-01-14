@@ -7,7 +7,7 @@ class Program
 {
     static void Main()
     {
-        Engine.Evoke();
+        Engine.Evoke(1280, 720,"Umer Engine");
         Engine.Update();
     }
 
