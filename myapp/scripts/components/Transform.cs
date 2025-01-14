@@ -9,7 +9,7 @@ public class Transform
     public Vector2f Scale = new Vector2f(1, 1);
     public float Rotation = 0;
     public PositionPresets? PositionPreset = PositionPresets.Center;
-    public void SetPosition(PositionPresets positionPreset)
+    public void SetLocation(PositionPresets positionPreset)
     {
         if(PositionPreset == PositionPresets.Center)
         {

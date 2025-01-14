@@ -5,6 +5,7 @@ using SFML.System;
 public static class Engine
 {
   public static Sketch logo = new Sketch();
+  public static Sketch car = new Sketch();
   static VideoMode videoMode;
   public static RenderWindow? window;
   public static uint width = 1280;
@@ -39,8 +40,10 @@ public static class Engine
         window.DispatchEvents();
         window.Clear(Color.White);
         logo.Paint();
-        logo.transform.SetPosition(Transform.PositionPresets.Center);
-        logo.SetOrigin(logo.sprite,Sketch.Origin.Center);
+        logo.texturePath = "images/white.jpg";
+        logo.color = Color.Black;
+        logo.transform.Scale = new Vector2f(0.5f, 0.5f);
+        logo.transform.SetLocation(Transform.PositionPresets.Center);
         window.Display();
         Console.WriteLine("Updating");
       }
