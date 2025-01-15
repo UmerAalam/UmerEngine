@@ -3,7 +3,7 @@ using SFML.Graphics;
 using SFML.Window;
 using SFML.System;
 using System.Net.Http.Headers;
-public static class Engine
+public static class Engine : Scene
 {
   public static Body body = new Body();
   private static VideoMode videoMode;
@@ -37,36 +37,14 @@ public static class Engine
     {
       while (window.IsOpen)
       {
+
         window.DispatchEvents();
         window.Clear(Color.White);
-        body.sketch.Paint("images/white.jpg");
-        body.sketch.color = Color.Red;
-        body.transform.Size = new Vector2f(0.25f, 0.25f);
-        // body.transform.location = new Vector2f(Engine.width / 2, Engine.height / 2);
-        // body.transform.SetLocation(Transform.PositionPresets.Center);
-
+        // Console.WriteLine(body.transform.Location);
+        Scene.Update();
         window.Display();
-        Console.WriteLine("Updating");
+        // Console.WriteLine("Updating");
       }
     }
   }
-  // static void Move(Sprite sprite, float moveSpeed = 2)
-  // {
-  //   if (Keyboard.IsKeyPressed(Keyboard.Key.W))
-  //   {
-  //     sprite.Position += new Vector2f(0, -moveSpeed);
-  //   }
-  //   else if (Keyboard.IsKeyPressed(Keyboard.Key.S))
-  //   {
-  //     sprite.Position += new Vector2f(0, moveSpeed);
-  //   }
-  //   else if (Keyboard.IsKeyPressed(Keyboard.Key.A))
-  //   {
-  //     sprite.Position += new Vector2f(-moveSpeed, 0);
-  //   }
-  //   else if (Keyboard.IsKeyPressed(Keyboard.Key.D))
-  //   {
-  //     sprite.Position += new Vector2f(moveSpeed, 0);
-  //   }
-  // }
 }

@@ -13,12 +13,17 @@ public class Body
     }
     void Update()
     {
-        if(Engine.window != null)
-        while (Engine.window.IsOpen)
+        if (Engine.window != null)
+            while (Engine.window.IsOpen)
+            {
+                sketch.sprite.Position = transform.Location;
+                Console.WriteLine(sketch.sprite.Position);
+                sketch.sprite.Rotation = transform.Rotation;
+                sketch.sprite.Scale = transform.Size;
+            }
+        else
         {
-            transform.Location = sketch.sprite.Position;
-            transform.Rotation = sketch.sprite.Rotation;
-            transform.Size = sketch.sprite.Scale;
+            Console.WriteLine("Window is null");
         }
     }
 }

@@ -3,6 +3,7 @@ using SFML.Graphics;
 using SFML.Window;
 using SFML.System;
 using System.IO.Compression;
+using System.Runtime.CompilerServices;
 class Program
 {
     static void Main()
@@ -10,5 +11,4 @@ class Program
         Engine.Evoke(1280, 720,"UMER Engine",60);
         Engine.Update();
     }
-
 }
