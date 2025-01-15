@@ -3,26 +3,21 @@ using SFML.Graphics;
 using SFML.System;
 public class Sketch
 {
-    public Transform transform = new Transform();
-    public string texturePath = "images/umer.png";
     public Texture texture = new Texture("images/umer.png");
     public Sprite sprite = new Sprite();
-    public Color? color = Color.White;
+    public Color color = Color.White;
     public FlipMode flip = FlipMode.None;
     public DrawMode drawMode = DrawMode.Smooth;
     public Origin origin = Origin.Center;
-    public void Paint()
+    public void Paint(string texturePath = "images/umer.png",bool outline = false)
     {
         texture = new Texture(texturePath);
         sprite = new Sprite(texture);
         Flip(sprite, flip);
         SetDrawMode(sprite, drawMode);
         SetOrigin(sprite, origin);
-        sprite.Position = transform.location;
-        sprite.Scale = transform.Scale;
-        sprite.Rotation = transform.Rotation;
         sprite.Texture = texture;
-        sprite.Color = color ?? Color.White;
+        sprite.Color = color;
         if (Engine.window != null)
             Engine.window.Draw(sprite);
     }

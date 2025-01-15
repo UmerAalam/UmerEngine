@@ -2,24 +2,24 @@ using System;
 using SFML.Graphics;
 using SFML.Window;
 using SFML.System;
+using System.Net.Http.Headers;
 public static class Engine
 {
-  public static Sketch logo = new Sketch();
-  public static Sketch car = new Sketch();
-  static VideoMode videoMode;
+  public static Body body = new Body();
+  private static VideoMode videoMode;
   public static RenderWindow? window;
   public static uint width = 1280;
   public static uint height = 720;
-  public static void Evoke(uint screenWidth = 1280, uint screenHeight = 720, string title = "Umer Engine")
+  public static void Evoke(uint screenWidth = 1280, uint screenHeight = 720, string title = "UMER Engine", uint framerate = 60)
   {
     Console.WriteLine("Evoke");
     width = screenWidth;
     height = screenHeight;
     // Create the main window
     videoMode = new VideoMode(screenWidth, screenHeight);
-    window = new RenderWindow(videoMode,title);
+    window = new RenderWindow(videoMode, title);
     window.Closed += (sender, e) => window.Close();
-    window.SetFramerateLimit(60);
+    window.SetFramerateLimit(framerate);
   }
   public static void Begin()
   {
@@ -39,11 +39,12 @@ public static class Engine
       {
         window.DispatchEvents();
         window.Clear(Color.White);
-        logo.Paint();
-        logo.texturePath = "images/white.jpg";
-        logo.color = Color.Black;
-        logo.transform.Scale = new Vector2f(0.5f, 0.5f);
-        logo.transform.SetLocation(Transform.PositionPresets.Center);
+        body.sketch.Paint("images/white.jpg");
+        body.sketch.color = Color.Red;
+        body.transform.Size = new Vector2f(0.25f, 0.25f);
+        // body.transform.location = new Vector2f(Engine.width / 2, Engine.height / 2);
+        // body.transform.SetLocation(Transform.PositionPresets.Center);
+
         window.Display();
         Console.WriteLine("Updating");
       }

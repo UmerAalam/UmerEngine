@@ -5,51 +5,62 @@ using SFML.System;
 
 public class Transform
 {
-    public Vector2f location;
-    public Vector2f Scale = new Vector2f(1, 1);
+    public Vector2f Location;
+    public Vector2f Size = new Vector2f(1, 1);
     public float Rotation = 0;
     public PositionPresets? PositionPreset = PositionPresets.Center;
-    public void SetLocation(PositionPresets positionPreset)
+    public Transform()
     {
-        if(PositionPreset == PositionPresets.Center)
+        
+    }
+    public void SetLocation(PositionPresets? positionPreset = PositionPresets.Center, Vector2f? customLocation = null)
+    {
+        if (customLocation == null)
         {
-            location = new Vector2f(Engine.height / 2, Engine.width / 2);
+            if (PositionPreset == PositionPresets.Center)
+        Location = new Vector2f(Engine.height / 2, Engine.width / 2);
+            }
+            else if (PositionPreset == PositionPresets.CenterTop)
+            {
+                Location = new Vector2f(Engine.height / 2, 0);
+            }
+            else if (PositionPreset == PositionPresets.CenterBottom)
+            {
+                Location = new Vector2f(Engine.height / 2, Engine.width);
+            }
+            else if (PositionPreset == PositionPresets.CenterLeft)
+            {
+                Location = new Vector2f(0, Engine.width / 2);
+            }
+            else if (PositionPreset == PositionPresets.CenterRight)
+            {
+                Location = new Vector2f(Engine.height, Engine.width / 2);
+            }
+            else if (PositionPreset == PositionPresets.TopLeft)
+            {
+                Location = new Vector2f(0, 0);
+            }
+            else if (PositionPreset == PositionPresets.TopRight)
+            {
+                Location = new Vector2f(Engine.height, 0);
+            }
+            else if (PositionPreset == PositionPresets.BottomLeft)
+            {
+                Location = new Vector2f(0, Engine.width);
+            }
+            else if (PositionPreset == PositionPresets.BottomRight)
+            {
+                Location = new Vector2f(Engine.height, Engine.width);
         }
-        else if(PositionPreset == PositionPresets.CenterTop)
+        else
         {
-            location = new Vector2f(Engine.height / 2, 0);
+            Location = (Vector2f)customLocation;
         }
-        else if(PositionPreset == PositionPresets.CenterBottom)
-        {
-            location = new Vector2f(Engine.height / 2, Engine.width);
-        }
-        else if(PositionPreset == PositionPresets.CenterLeft)
-        {
-            location = new Vector2f(0, Engine.width / 2);
-        }
-        else if(PositionPreset == PositionPresets.CenterRight)
-        {
-            location = new Vector2f(Engine.height, Engine.width / 2);
-        }
-        else if(PositionPreset == PositionPresets.TopLeft)
-        {
-            location = new Vector2f(0, 0);
-        }
-        else if(PositionPreset == PositionPresets.TopRight)
-        {
-            location = new Vector2f(Engine.height, 0);
-        }
-        else if(PositionPreset == PositionPresets.BottomLeft)
-        {
-            location = new Vector2f(0, Engine.width);
-        }
-        else if(PositionPreset == PositionPresets.BottomRight)
-        {
-            location = new Vector2f(Engine.height, Engine.width);
-        }
+
     }
     public enum PositionPresets
     {
+        Custom,
         Center,
         CenterTop,
         CenterBottom,
