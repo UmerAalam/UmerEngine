@@ -6,7 +6,7 @@ using SFML.System;
 public class Transform
 {
     public Vector2f Location = new Vector2f(0, 0);
-    public Vector2f Size = new Vector2f(0.5f, 0.5f);
+    public Vector2f Size = new Vector2f(1f, 1f);
     public float Rotation = 0;
     public void SetLocation(LocationPresets locationPreset = LocationPresets.Center, Vector2f? customLocation = null)
     {

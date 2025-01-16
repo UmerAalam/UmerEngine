@@ -11,11 +11,9 @@ public class Sketch
     public DrawMode drawMode = DrawMode.Smooth;
     public Origin origin = Origin.Center;
     public Shapes shapes = new Shapes();
-    public void Paint(Shape shape, bool outline = false)
+    public void Paint(string shape = "images/Shapes/Square.png", bool outline = false)
     {
-        if(shape == null)
-        texture = new Texture(Shapes.Square());
-        else texture = new Texture(shape.ToString());
+        texture = new Texture(shape.ToString());
         sprite = new Sprite(texture);
         Flip(sprite, this.flip);
         sprite.Texture = texture;

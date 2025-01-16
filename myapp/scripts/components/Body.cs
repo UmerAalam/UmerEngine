@@ -8,9 +8,9 @@ public class Body
     bool callOnce = true;
     public Sketch sketch = new Sketch();
 
-    public void Show(string texturePath = "images/Shapes/White.png", Transform.LocationPresets locationPreset = Transform.LocationPresets.Center)
+    public void Show(string shape = "images/Shapes/Square.png", Transform.LocationPresets locationPreset = Transform.LocationPresets.Center)
     {
-        sketch.Paint(texturePath);
+        sketch.Paint(shape);
         if (callOnce)
         {
             sketch.origin = Sketch.Origin.Center;
