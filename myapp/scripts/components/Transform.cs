@@ -5,11 +5,10 @@ using SFML.System;
 
 public class Transform
 {
-    public Vector2f Location;
-    public Vector2f Size = new Vector2f(1, 1);
+    public Vector2f Location = new Vector2f(0, 0);
+    public Vector2f Size = new Vector2f(0.5f, 0.5f);
     public float Rotation = 0;
-    public PositionPresets? PositionPreset = PositionPresets.Center;
-    public void SetLocation(Vector2f? customLocation = null)
+    public void SetLocation(LocationPresets locationPreset = LocationPresets.Center, Vector2f? customLocation = null)
     {
         if (customLocation != null)
         {
@@ -17,56 +16,55 @@ public class Transform
             return;
         }
 
-        // uint centerX = Engine.height / 2;
-        // Console.WriteLine(centerX);
-        // uint centerY = Engine.width / 2;
-        // Console.WriteLine(centerY);
+        uint centerX = 1280/ 2;
+        Console.WriteLine(centerX);
+        uint centerY = 720 / 2;
+        Console.WriteLine(centerY);
 
+        switch (locationPreset)
+        {
+            case LocationPresets.Center:
+                Location = new Vector2f(centerX, centerY);
+                break;
 
-        // switch (positionPreset)
-        // {
-        //     case PositionPresets.Center:
-        //         Location = new Vector2f(centerX, centerY);
-        //         break;
+            case LocationPresets.CenterTop:
+                Location = new Vector2f(centerX, 0);
+                break;
 
-        //     case PositionPresets.CenterTop:
-        //         Location = new Vector2f(centerX, 0);
-        //         break;
+            case LocationPresets.CenterBottom:
+                Location = new Vector2f(centerX, Engine.width);
+                break;
 
-        //     case PositionPresets.CenterBottom:
-        //         Location = new Vector2f(centerX, Engine.width);
-        //         break;
+            case LocationPresets.CenterLeft:
+                Location = new Vector2f(0, centerY);
+                break;
 
-        //     case PositionPresets.CenterLeft:
-        //         Location = new Vector2f(0, centerY);
-        //         break;
+            case LocationPresets.CenterRight:
+                Location = new Vector2f(Engine.height, centerY);
+                break;
 
-        //     case PositionPresets.CenterRight:
-        //         Location = new Vector2f(Engine.height, centerY);
-        //         break;
+            case LocationPresets.TopLeft:
+                Location = new Vector2f(0, 0);
+                break;
 
-        //     case PositionPresets.TopLeft:
-        //         Location = new Vector2f(0, 0);
-        //         break;
+            case LocationPresets.TopRight:
+                Location = new Vector2f(Engine.height, 0);
+                break;
 
-        //     case PositionPresets.TopRight:
-        //         Location = new Vector2f(Engine.height, 0);
-        //         break;
+            case LocationPresets.BottomLeft:
+                Location = new Vector2f(0, Engine.width);
+                break;
 
-        //     case PositionPresets.BottomLeft:
-        //         Location = new Vector2f(0, Engine.width);
-        //         break;
+            case LocationPresets.BottomRight:
+                Location = new Vector2f(Engine.height, Engine.width);
+                break;
 
-        //     case PositionPresets.BottomRight:
-        //         Location = new Vector2f(Engine.height, Engine.width);
-        //         break;
-
-        //     default:
-        //         throw new ArgumentException("Invalid position preset provided.");
-        // }
+            default:
+                throw new ArgumentException("Invalid position preset provided.");
+        }
     }
 
-    public enum PositionPresets
+    public enum LocationPresets
     {
         Custom,
         Center,

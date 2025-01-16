@@ -5,7 +5,6 @@ using SFML.System;
 using System.Net.Http.Headers;
 public static class Engine
 {
-  public static bool isRunning = true;
   public static Scene scene = new Scene();
   private static VideoMode videoMode;
   public static RenderWindow? window;
@@ -19,6 +18,8 @@ public static class Engine
     // Create the main window
     videoMode = new VideoMode(screenWidth, screenHeight);
     window = new RenderWindow(videoMode, title);
+    // For setting icon
+    // window.SetIcon();
     window.Closed += (sender, e) => window.Close();
     window.SetFramerateLimit(framerate);
     Begin();
@@ -39,7 +40,6 @@ public static class Engine
     {
       while (window.IsOpen)
       {
-        isRunning = true;
         window.DispatchEvents();
         window.Clear(Color.White);
         scene.Game();
