@@ -8,7 +8,7 @@ public class Body
     bool callOnce = true;
     public Sketch sketch = new Sketch();
 
-    public void Show(string shape = "images/Shapes/Square.png", Transform.LocationPresets locationPreset = Transform.LocationPresets.Center)
+    public void Paint(string shape = "images/Shapes/Square.png", Transform.LocationPresets locationPreset = Transform.LocationPresets.Center)
     {
         sketch.Paint(shape);
         if (callOnce)

@@ -11,9 +11,11 @@ public class Sketch
     public DrawMode drawMode = DrawMode.Smooth;
     public Origin origin = Origin.Center;
     public Shapes shapes = new Shapes();
-    public void Paint(string shape = "images/Shapes/Square.png", bool outline = false)
+    // private variables
+    private float sizeDivider = 50;
+    public void Paint(string texturePath = "images/Shapes/Square.png", bool outline = false)
     {
-        texture = new Texture(shape.ToString());
+        texture = new Texture(texturePath);
         sprite = new Sprite(texture);
         Flip(sprite, this.flip);
         sprite.Texture = texture;
@@ -21,10 +23,39 @@ public class Sketch
         SetOrigin(sprite, origin);
         sprite.Position = transform.Location;
         sprite.Rotation = transform.Rotation;
-        sprite.Scale = transform.Size;
+        sprite.Scale = GetSize(texturePath, transform.Size);
         SetDrawMode(sprite, drawMode);
         if (Engine.window != null)
             Engine.window.Draw(sprite);
+    }
+    Vector2f GetSize(string texturePath, Vector2f Size)
+    {
+        if (Shapes.Square() == texturePath)
+        {
+            Size = transform.Size / sizeDivider;
+        }
+        else if (Shapes.Circle() == texturePath)
+        {
+            Size = transform.Size / sizeDivider;
+        }
+        else if (Shapes.Circle() == texturePath)
+        {
+            Size = transform.Size / sizeDivider;
+        }
+        else if (Shapes.Circle() == texturePath)
+        {
+            Size = transform.Size / sizeDivider;
+        }
+        else if (Shapes.Circle() == texturePath)
+        {
+            Size = transform.Size / sizeDivider;
+        }
+        else
+        {
+            Size = transform.Size / sizeDivider;;
+        }
+        Console.WriteLine(Size);
+        return Size;
     }
     public void SetOrigin(Sprite sprite, Origin origin)
     {
