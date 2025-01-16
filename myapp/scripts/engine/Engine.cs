@@ -3,9 +3,10 @@ using SFML.Graphics;
 using SFML.Window;
 using SFML.System;
 using System.Net.Http.Headers;
-public static class Engine : Scene
+public static class Engine
 {
-  public static Body body = new Body();
+  public static bool isRunning = true;
+  public static Scene scene = new Scene();
   private static VideoMode videoMode;
   public static RenderWindow? window;
   public static uint width = 1280;
@@ -20,6 +21,7 @@ public static class Engine : Scene
     window = new RenderWindow(videoMode, title);
     window.Closed += (sender, e) => window.Close();
     window.SetFramerateLimit(framerate);
+    Begin();
   }
   public static void Begin()
   {
@@ -37,11 +39,10 @@ public static class Engine : Scene
     {
       while (window.IsOpen)
       {
-
+        isRunning = true;
         window.DispatchEvents();
         window.Clear(Color.White);
-        // Console.WriteLine(body.transform.Location);
-        Scene.Update();
+        scene.Game();
         window.Display();
         // Console.WriteLine("Updating");
       }

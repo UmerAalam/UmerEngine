@@ -4,8 +4,13 @@ using SFML.Window;
 using SFML.System;
 public class Scene
 {
-    public void Update()
+    public Body body = new Body();
+    public void Game()
     {
-        Console.WriteLine("Updating");
+        body.sketch.Paint();
+        body.sketch.transform.SetLocation(Transform.PositionPresets.CenterBottom,null);
+        Console.WriteLine(body.sketch.transform.Location);
+        // body.sketch.transform.Rotation = 45;
+        // body.transform.SetLocation();
     }
 }
