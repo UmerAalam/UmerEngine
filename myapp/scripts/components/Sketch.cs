@@ -15,13 +15,13 @@ public class Sketch
         texture = new Texture(texturePath);
         sprite = new Sprite(texture);
         Flip(sprite, flip);
+        SetOrigin(sprite, origin);
+        sprite.Texture = texture;
+        sprite.Color = color;
         sprite.Position = transform.Location;
         sprite.Rotation = transform.Rotation;
         sprite.Scale = transform.Size;
         SetDrawMode(sprite, drawMode);
-        sprite.Texture = texture;
-        sprite.Color = color;
-        SetOrigin(sprite, origin);
         if (Engine.window != null)
             Engine.window.Draw(sprite);
     }

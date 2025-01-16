@@ -8,7 +8,7 @@ public class Scene
     public void Game()
     {
         body.sketch.Paint();
-        body.sketch.transform.SetLocation(Transform.PositionPresets.CenterBottom,null);
+        body.sketch.transform.SetLocation(new Vector2f(Engine.height / 2, Engine.width / 2)); 
         Console.WriteLine(body.sketch.transform.Location);
         // body.sketch.transform.Rotation = 45;
         // body.transform.SetLocation();
