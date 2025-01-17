@@ -10,15 +10,15 @@ public class Scene
     Body body2 = new Body();
     public void Game()
     {
-        body.sketch.transform.Location = new Vector2f(440,360);
-        body.Paint(Shapes.Circle());
-        body.sketch.color = Color.Red;
-        body1.sketch.transform.Location = new Vector2f(640,360);
+        // body.sketch.transform.Location = new Vector2f(440,360);
+        // body.Paint(Shapes.Circle());
+        // body.sketch.color = Color.Red;
+        body1.sketch.transform.Location = Vector2.Lerp(new Vector2f(640f,360f), Vector2.Xero, Time.DeltaTime); 
         body1.Paint(Shapes.Square());
         body1.sketch.color = Color.Blue;
-        body2.sketch.transform.Location = new Vector2f(840,360);
-        body2.Paint(Shapes.Triangle());
-        body2.sketch.color = Color.Green;
+        // body2.sketch.transform.Location = new Vector2f(840,360);
+        // body2.Paint(Shapes.Triangle());
+        // body2.sketch.color = Color.Green;
         Console.WriteLine(Time.DeltaTime);
     }
 }
