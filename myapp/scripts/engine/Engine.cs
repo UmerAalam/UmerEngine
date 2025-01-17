@@ -5,7 +5,7 @@ using SFML.System;
 using System.Net.Http.Headers;
 public static class Engine
 {
-  // public static Scene scene = new Scene();
+  public static Scene scene = new Scene();
   static Sketch sketch = new Sketch();
   private static VideoMode videoMode;
   public static RenderWindow? window;
@@ -55,7 +55,7 @@ public static class Engine
         window.Clear(Color.White);
         // scene.Game();
         //Calculating fps
-        sketch.Paint();
+        scene.Game();
         float elapsedTime = clock.Restart().AsSeconds();
         fps = 1.0f / elapsedTime;
         fpsText.DisplayedString = $"FPS: {fps:F2}";

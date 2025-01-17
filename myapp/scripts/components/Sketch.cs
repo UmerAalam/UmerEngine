@@ -4,59 +4,15 @@ using SFML.System;
 public class Sketch
 {
     public Transform transform = new Transform();
-    public Texture texture = new Texture("images/white.jpg");
-    public Sprite sprite = new Sprite();
+    // public Texture texture = new Texture("images/white.jpg");
+    // public Sprite sprite = new Sprite();
     public Color color = Color.White;
     public FlipMode flip = FlipMode.None;
     public DrawMode drawMode = DrawMode.Smooth;
     public Origin origin = Origin.Center;
-    public Shapes shapes = new Shapes();
-    // private variables
-    private float sizeDivider = 50;
     public void Paint(string texturePath = "images/Shapes/Square.png", bool outline = false)
     {
-        texture = new Texture(texturePath);
-        sprite = new Sprite(texture);
-        Flip(sprite, this.flip);
-        sprite.Texture = texture;
-        sprite.Color = color;
-        SetOrigin(sprite, origin);
-        sprite.Position = transform.Location;
-        sprite.Rotation = transform.Rotation;
-        sprite.Scale = Vector2.one;
-        // sprite.Scale = GetSize(texturePath, transform.Size);
-        SetDrawMode(sprite, drawMode);
-        if (Engine.window != null)
-            Engine.window.Draw(sprite);
-    }
-    Vector2f GetSize(string texturePath, Vector2f Size)
-    {
-        if (Shapes.Square == texturePath)
-        {
-            Size = transform.Size / sizeDivider;
-        }
-        else if (Shapes.Circle == texturePath)
-        {
-            Size = transform.Size / sizeDivider;
-        }
-        else if (Shapes.Circle == texturePath)
-        {
-            Size = transform.Size / sizeDivider;
-        }
-        else if (Shapes.Circle == texturePath)
-        {
-            Size = transform.Size / sizeDivider;
-        }
-        else if (Shapes.Circle == texturePath)
-        {
-            Size = transform.Size / sizeDivider;
-        }
-        else
-        {
-            Size = transform.Size / sizeDivider;;
-        }
-        // Console.WriteLine(Size);
-        return Size;
+
     }
     public void SetOrigin(Sprite sprite, Origin origin)
     {
@@ -92,21 +48,21 @@ public class Sketch
             sprite.Texture.Smooth = true;
         }
     }
-    public void Flip(Sprite sprite, FlipMode flip)
-    {
-        if (flip == FlipMode.None)
-        {
-            sprite.Scale = new Vector2f(1, 1);
-        }
-        if (flip == FlipMode.FlipX)
-        {
-            sprite.Scale = new Vector2f(-1, 1);
-        }
-        else if (flip == FlipMode.FlipY)
-        {
-            sprite.Scale = new Vector2f(1, -1);
-        }
-    }
+    // public void Flip(Sprite sprite, FlipMode flip)
+    // {
+    //     if (flip == FlipMode.None)
+    //     {
+    //         sprite.Scale = new Vector2f(1, 1);
+    //     }
+    //     if (flip == FlipMode.FlipX)
+    //     {
+    //         sprite.Scale = new Vector2f(-1, 1);
+    //     }
+    //     else if (flip == FlipMode.FlipY)
+    //     {
+    //         sprite.Scale = new Vector2f(1, -1);
+    //     }
+    // }
     public enum Origin
     {
         Center,
