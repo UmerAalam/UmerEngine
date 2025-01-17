@@ -23,30 +23,31 @@ public class Sketch
         SetOrigin(sprite, origin);
         sprite.Position = transform.Location;
         sprite.Rotation = transform.Rotation;
-        sprite.Scale = GetSize(texturePath, transform.Size);
+        sprite.Scale = Vector2.one;
+        // sprite.Scale = GetSize(texturePath, transform.Size);
         SetDrawMode(sprite, drawMode);
         if (Engine.window != null)
             Engine.window.Draw(sprite);
     }
     Vector2f GetSize(string texturePath, Vector2f Size)
     {
-        if (Shapes.Square() == texturePath)
+        if (Shapes.Square == texturePath)
         {
             Size = transform.Size / sizeDivider;
         }
-        else if (Shapes.Circle() == texturePath)
+        else if (Shapes.Circle == texturePath)
         {
             Size = transform.Size / sizeDivider;
         }
-        else if (Shapes.Circle() == texturePath)
+        else if (Shapes.Circle == texturePath)
         {
             Size = transform.Size / sizeDivider;
         }
-        else if (Shapes.Circle() == texturePath)
+        else if (Shapes.Circle == texturePath)
         {
             Size = transform.Size / sizeDivider;
         }
-        else if (Shapes.Circle() == texturePath)
+        else if (Shapes.Circle == texturePath)
         {
             Size = transform.Size / sizeDivider;
         }
@@ -54,7 +55,7 @@ public class Sketch
         {
             Size = transform.Size / sizeDivider;;
         }
-        Console.WriteLine(Size);
+        // Console.WriteLine(Size);
         return Size;
     }
     public void SetOrigin(Sprite sprite, Origin origin)

@@ -22,5 +22,6 @@ public static class Time
         double currentFrameTime = stopwatch.Elapsed.TotalSeconds;
         DeltaTime = currentFrameTime - lastFrameTime;
         lastFrameTime = currentFrameTime;
+        Console.WriteLine(DeltaTime);
     }
 }

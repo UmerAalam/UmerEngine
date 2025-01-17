@@ -10,10 +10,4 @@ public static class Vector2
     public static Vector2f one { get; private set; } = new Vector2f(1f, 1f);
     public static Vector2f Two { get; private set; } = new Vector2f(2f, 2f);
     public static Vector2f Three { get; private set; } = new Vector2f(3f, 3f);
-
-    public static Vector2f Lerp(Vector2f a, Vector2f b, double time)
-    {
-        return new Vector2f(a.X + (b.X - a.X) * (float)time, a.Y + (b.Y - a.Y) * (float)time);
-    }
-
 }
