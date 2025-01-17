@@ -16,34 +16,18 @@ public class Sketch
     public CircleShape? circle = null;
     public CircleShape? triangle = null;
     bool callOnce = true;
-    public void Paint(String shape = "Square")
+    public void Square()
     {
-        if (callOnce)
+        if(callOnce)
         {
-            if (shape == Shapes.Square)
-            {
-                square = new RectangleShape(new Vector2f(100, 100));
-                var renderShape = square;
-                square.FillColor = color;
-                callOnce = false;
-            }
-            else if (shape == Shapes.Circle)
-            {
-                circle = new CircleShape(100, 100);
-                circle.FillColor = color;
-                var renderShape = square;
-                callOnce = false;
-            }
-            else if (shape == Shapes.Triangle)
-            {
-                triangle = new CircleShape(100, 3);
-                triangle.FillColor = color;
-                var renderShape = square;
-                callOnce = false;
-            }
+            square = new RectangleShape(new Vector2f(100, 100));
+            square.FillColor = Color.Black;
+            square.Origin = new Vector2f(square.Size.X / 2, square.Size.Y / 2);
+            square.Position = new Vector2f(640, 360);
+            callOnce = false;
         }
         if (Engine.window != null)
-            Engine.window.Draw(render);
+            Engine.window.Draw(square);
     }
     public void SetOrigin(Sprite sprite, Origin origin)
     {
