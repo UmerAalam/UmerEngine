@@ -19,6 +19,6 @@ public class Scene
         body2.sketch.transform.Location = new Vector2f(840,360);
         body2.Paint(Shapes.Triangle());
         body2.sketch.color = Color.Green;
-
+        Console.WriteLine(Time.DeltaTime);
     }
 }
