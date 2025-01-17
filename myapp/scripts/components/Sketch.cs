@@ -1,6 +1,8 @@
 using System;
+using Microsoft.VisualBasic;
 using SFML.Graphics;
 using SFML.System;
+using System.Text;
 public class Sketch
 {
     public Transform transform = new Transform();
@@ -10,9 +12,38 @@ public class Sketch
     public FlipMode flip = FlipMode.None;
     public DrawMode drawMode = DrawMode.Smooth;
     public Origin origin = Origin.Center;
-    public void Paint(string texturePath = "images/Shapes/Square.png", bool outline = false)
+    public RectangleShape? square = null;
+    public CircleShape? circle = null;
+    public CircleShape? triangle = null;
+    bool callOnce = true;
+    public void Paint(String shape = "Square")
     {
-
+        if (callOnce)
+        {
+            if (shape == Shapes.Square)
+            {
+                square = new RectangleShape(new Vector2f(100, 100));
+                var renderShape = square;
+                square.FillColor = color;
+                callOnce = false;
+            }
+            else if (shape == Shapes.Circle)
+            {
+                circle = new CircleShape(100, 100);
+                circle.FillColor = color;
+                var renderShape = square;
+                callOnce = false;
+            }
+            else if (shape == Shapes.Triangle)
+            {
+                triangle = new CircleShape(100, 3);
+                triangle.FillColor = color;
+                var renderShape = square;
+                callOnce = false;
+            }
+        }
+        if (Engine.window != null)
+            Engine.window.Draw(render);
     }
     public void SetOrigin(Sprite sprite, Origin origin)
     {
