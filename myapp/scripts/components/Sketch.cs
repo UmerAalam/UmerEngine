@@ -20,37 +20,80 @@ public class Sketch
         Position = new Vector2f(Engine.width / 2f, Engine.height / 2f),
         FillColor = Color.White,
     };
-    public CircleShape? circle = null;
-    public CircleShape? triangle = null;
-    public void Square(Color? color = null,Transform.LocationPresets locationPresets = Transform.LocationPresets.Center)
+    public CircleShape circle = new CircleShape()
     {
-        if(once)
+        Radius = 100f,
+        Scale = new Vector2f(1, 1),
+        Position = new Vector2f(Engine.width / 2f, Engine.height / 2f),
+        FillColor = Color.White,
+    };
+    public CircleShape triangle = new CircleShape(radius: 100f,pointCount:3)
+    {
+        Scale = new Vector2f(1, 1),
+        Position = new Vector2f(Engine.width / 2f, Engine.height / 2f),
+        FillColor = Color.White,
+    };
+    public void Square(Color? color = null, Transform.LocationPresets locationPresets = Transform.LocationPresets.Center)
+    {
+        if (once)
         {
-            if(Engine.window != null)
-            square.Position = transform.SetLocation(Engine.window.Size,locationPresets,null);
+            if (Engine.window != null)
+                square.Position = transform.SetLocation(Engine.window.Size, locationPresets, null);
             once = false;
         }
         square.FillColor = color ?? Color.Black;
-        square.Position =  transform.Location;
+        square.Position = transform.Location;
         square.Rotation = transform.Rotation;
         square.Scale = transform.Size;
         square.Origin = SetOrigin(square.Size);
         if (Engine.window != null)
             Engine.window.Draw(square);
     }
+    public void Circle(Color? color = null, Transform.LocationPresets locationPresets = Transform.LocationPresets.Center)
+    {
+        if (once)
+        {
+            if (Engine.window != null)
+                circle.Position = transform.SetLocation(Engine.window.Size, locationPresets, null);
+            once = false;
+        }
+        circle.FillColor = color ?? Color.Black;
+        circle.Position = transform.Location;
+        circle.Rotation = transform.Rotation;
+        circle.Scale = transform.Size;
+        circle.Origin = new Vector2f(circle.Radius / 2, circle.Radius / 2);
+        if (Engine.window != null)
+            Engine.window.Draw(circle);
+    }
+    public void Triangle(Color? color = null, Transform.LocationPresets locationPresets = Transform.LocationPresets.Center)
+    {
+        if (once)
+        {
+            if (Engine.window != null)
+                triangle.Position = transform.SetLocation(Engine.window.Size, locationPresets, null);
+            once = false;
+        }
+        triangle.FillColor = color ?? Color.Black;
+        triangle.Position = transform.Location;
+        triangle.Rotation = transform.Rotation;
+        triangle.Scale = transform.Size;
+        triangle.Origin = SetOrigin(triangle.Size);
+        if (Engine.window != null)
+            Engine.window.Draw(triangle);
+    }
     public Vector2f SetOrigin(Vector2f SpriteSize, Origin origin = Origin.Center)
     {
-        if(origin == Origin.Center)
+        if (origin == Origin.Center)
             return SpriteSize / 2;
-        else if(origin == Origin.TopLeft)
+        else if (origin == Origin.TopLeft)
             return new Vector2f(0, 0);
-        else if(origin == Origin.TopRight)
+        else if (origin == Origin.TopRight)
             return new Vector2f(SpriteSize.X, 0);
-        else if(origin == Origin.BottomLeft)
+        else if (origin == Origin.BottomLeft)
             return new Vector2f(0, SpriteSize.Y);
-        else if(origin == Origin.BottomRight)
+        else if (origin == Origin.BottomRight)
             return new Vector2f(SpriteSize.X, SpriteSize.Y);
-        else if(origin == Origin.Custom)
+        else if (origin == Origin.Custom)
             return SpriteSize;
         return SpriteSize;
     }
