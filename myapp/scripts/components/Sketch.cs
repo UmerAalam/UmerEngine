@@ -77,7 +77,7 @@ public class Sketch
         triangle.Position = transform.Location;
         triangle.Rotation = transform.Rotation;
         triangle.Scale = transform.Size;
-        triangle.Origin = SetOrigin(triangle.Size);
+        triangle.Origin = SetOrigin(new Vector2f(triangle.Radius / 2, triangle.Radius / 2)); 
         if (Engine.window != null)
             Engine.window.Draw(triangle);
     }
