@@ -8,17 +8,17 @@ public class Transform
     public Vector2f Location = new Vector2f(0, 0);
     public Vector2f Size = new Vector2f(1f, 1f);
     public float Rotation = 0;
-    public void SetLocation(LocationPresets locationPreset = LocationPresets.Center, Vector2f? customLocation = null)
+    public Vector2f SetLocation(Vector2u windowSize,LocationPresets locationPreset = LocationPresets.Center, Vector2f? customLocation = null)
     {
         if (customLocation != null)
         {
             Location = (Vector2f)customLocation;
-            return;
+            return Location;
         }
 
-        uint centerX = 1280/ 2;
+        uint centerX = (uint)windowSize.X / 2;
         Console.WriteLine(centerX);
-        uint centerY = 720 / 2;
+        uint centerY = (uint)windowSize.Y / 2;
         Console.WriteLine(centerY);
 
         switch (locationPreset)
@@ -62,6 +62,7 @@ public class Transform
             default:
                 throw new ArgumentException("Invalid position preset provided.");
         }
+        return Location;
     }
 
     public enum LocationPresets

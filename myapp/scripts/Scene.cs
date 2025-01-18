@@ -7,6 +7,6 @@ public class Scene
     public Sketch sketch = new Sketch();
     public void Game()
     {
-        sketch.Square();
+        sketch.Square(Color.Blue);
     }
 }
