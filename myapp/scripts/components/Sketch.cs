@@ -12,20 +12,16 @@ public class Sketch
     public FlipMode flip = FlipMode.None;
     public DrawMode drawMode = DrawMode.Smooth;
     public Origin origin = Origin.Center;
-    public RectangleShape? square = null;
+    public RectangleShape? square = new RectangleShape(new Vector2f(100, 100))
+    {
+        Scale = new Vector2f(1, 1),
+        Position = Origin.Center,
+    };
     public CircleShape? circle = null;
     public CircleShape? triangle = null;
-    bool callOnce = true;
     public void Square()
     {
-        if(callOnce)
-        {
-            square = new RectangleShape(new Vector2f(100, 100));
-            square.FillColor = Color.Black;
-            square.Origin = new Vector2f(square.Size.X / 2, square.Size.Y / 2);
-            square.Position = new Vector2f(640, 360);
-            callOnce = false;
-        }
+
         if (Engine.window != null)
             Engine.window.Draw(square);
     }
