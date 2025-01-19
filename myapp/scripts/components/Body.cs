@@ -5,7 +5,7 @@ using SFML.System;
 using System.Drawing;
 public class Body
 {
-    bool callOnce = true;
+    // bool callOnce = true;
     public Sketch sketch = new Sketch();
 
     public void Paint(string shape = "images/Shapes/Square.png", Transform.LocationPresets locationPreset = Transform.LocationPresets.Center)

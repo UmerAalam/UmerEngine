@@ -14,10 +14,19 @@ public static class Engine
   public static void Evoke(uint screenWidth = 1280, uint screenHeight = 720, string title = "UMER Engine", uint framerate = 60)
   {
     Console.WriteLine("Evoke");
+    ContextSettings settings = new ContextSettings
+    {
+      AntialiasingLevel = 8
+
+    };
     width = screenWidth;
     height = screenHeight;
     // Create the main window
-    videoMode = new VideoMode(screenWidth, screenHeight);
+    videoMode = new VideoMode()
+    {
+      Height = screenHeight,
+      Width = screenWidth,
+    };
     window = new RenderWindow(videoMode, title);
     // For setting icon
     // window.SetIcon();
