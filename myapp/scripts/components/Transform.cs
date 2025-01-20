@@ -66,19 +66,19 @@ public class Transform
     {
         if (Keyboard.IsKeyPressed(Keyboard.Key.W))
         {
-            
+            Location -= Vector2.Magnitude(0, moveSpeed);
         }
         if (Keyboard.IsKeyPressed(Keyboard.Key.S))
         {
-            Location.Y += moveSpeed;
+            Location += Vector2.Magnitude(0, moveSpeed);
         }
         if (Keyboard.IsKeyPressed(Keyboard.Key.A))
         {
-            Location.X -= moveSpeed;
+            Location -= Vector2.Magnitude(moveSpeed, 0);
         }
         if (Keyboard.IsKeyPressed(Keyboard.Key.D))
         {
-            Location.X += moveSpeed;
+            Location += Vector2.Magnitude(moveSpeed, 0);
         }
     }
 
