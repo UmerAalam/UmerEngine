@@ -8,7 +8,7 @@ public class Transform
     public Vector2f Location = new Vector2f(0, 0);
     public Vector2f Size = new Vector2f(1f, 1f);
     public float Rotation = 0;
-    public Vector2f SetLocation(Vector2u windowSize,LocationPresets locationPreset = LocationPresets.Center, Vector2f? customLocation = null)
+    public Vector2f SetLocation(Vector2u windowSize, LocationPresets locationPreset = LocationPresets.Center, Vector2f? customLocation = null)
     {
         if (customLocation != null)
         {
@@ -61,6 +61,25 @@ public class Transform
                 throw new ArgumentException("Invalid position preset provided.");
         }
         return Location;
+    }
+    public void Move(float moveSpeed)
+    {
+        if (Keyboard.IsKeyPressed(Keyboard.Key.W))
+        {
+            
+        }
+        if (Keyboard.IsKeyPressed(Keyboard.Key.S))
+        {
+            Location.Y += moveSpeed;
+        }
+        if (Keyboard.IsKeyPressed(Keyboard.Key.A))
+        {
+            Location.X -= moveSpeed;
+        }
+        if (Keyboard.IsKeyPressed(Keyboard.Key.D))
+        {
+            Location.X += moveSpeed;
+        }
     }
 
     public enum LocationPresets
