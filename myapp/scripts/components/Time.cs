@@ -8,20 +8,21 @@ public static class Time
 {
     private static Stopwatch stopwatch;
     private static double lastFrameTime; 
-    public static double DeltaTime { get; private set; }
+    public static double deltaTime { get; private set; }
 
     static Time()
     {
         stopwatch = new Stopwatch();
         stopwatch.Start();
         lastFrameTime = 0;
-        DeltaTime = 0;
+        deltaTime = 0;
     }
-    public static void Update()
+    public static double DeltaTime()
     {
         double currentFrameTime = stopwatch.Elapsed.TotalSeconds;
-        DeltaTime = currentFrameTime - lastFrameTime;
+        deltaTime = currentFrameTime - lastFrameTime;
         lastFrameTime = currentFrameTime;
-        Console.WriteLine(DeltaTime);
+        Console.WriteLine(deltaTime);
+        return deltaTime;
     }
 }

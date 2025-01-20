@@ -5,6 +5,8 @@ using SFML.System;
 
 public class Transform
 {
+    public static bool rotRight = Keyboard.IsKeyPressed(Keyboard.Key.Right);
+    public static bool rotLeft = Keyboard.IsKeyPressed(Keyboard.Key.Left);
     public Vector2f Location = new Vector2f(0, 0);
     public Vector2f Size = new Vector2f(1f, 1f);
     public float Rotation = 0;
@@ -62,26 +64,53 @@ public class Transform
         }
         return Location;
     }
-    public void Move(float moveSpeed)
+    public void Move(float moveSpeed, bool up = false, bool down = false, bool left = false, bool right = false)
     {
-        if (Keyboard.IsKeyPressed(Keyboard.Key.W))
+        Vector2f movement = new Vector2f(0, 0);
+        up = Keyboard.IsKeyPressed(Keyboard.Key.W);
+        down = Keyboard.IsKeyPressed(Keyboard.Key.S);
+        left = Keyboard.IsKeyPressed(Keyboard.Key.A);
+        right = Keyboard.IsKeyPressed(Keyboard.Key.D);
+        if (up)
         {
-            Location -= Vector2.Magnitude(0, moveSpeed);
+            movement.Y -= moveSpeed;
         }
-        if (Keyboard.IsKeyPressed(Keyboard.Key.S))
+        if (down)
         {
-            Location += Vector2.Magnitude(0, moveSpeed);
+            movement.Y += moveSpeed;
         }
-        if (Keyboard.IsKeyPressed(Keyboard.Key.A))
+        if (left)
         {
-            Location -= Vector2.Magnitude(moveSpeed, 0);
+            movement.X -= moveSpeed;
         }
-        if (Keyboard.IsKeyPressed(Keyboard.Key.D))
+        if (right)
         {
-            Location += Vector2.Magnitude(moveSpeed, 0);
+            movement.X += moveSpeed;
+        }
+
+        float magnitude = (float)Math.Sqrt((movement.X * movement.X) + (movement.Y * movement.Y));
+        if (magnitude > 0)
+        {
+            movement.X /= magnitude;
+            movement.Y /= magnitude;
+        }
+
+        movement.X *= moveSpeed;
+        movement.Y *= moveSpeed;
+
+        Location += movement;
+    }
+    public void Rotate(float rotationSpeed)
+    {
+        if (Keyboard.IsKeyPressed(Keyboard.Key.Left))
+        {
+            Rotation -= rotationSpeed;
+        }
+        if (Keyboard.IsKeyPressed(Keyboard.Key.Right))
+        {
+            Rotation += rotationSpeed;
         }
     }
-
     public enum LocationPresets
     {
         Custom,

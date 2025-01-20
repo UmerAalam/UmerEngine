@@ -6,8 +6,7 @@ using System.Text;
 public class Sketch
 {
     public Transform transform = new Transform();
-    // public Texture texture = new Texture("images/white.jpg");
-    // public Sprite sprite = new Sprite();
+    public Collider collider = new Collider();
     public Color color = Color.White;
     public FlipMode flip = FlipMode.None;
     public DrawMode drawMode = DrawMode.Smooth;
