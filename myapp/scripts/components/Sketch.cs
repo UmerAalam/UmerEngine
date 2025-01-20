@@ -77,6 +77,7 @@ public class Sketch
             if (Engine.window != null)
             {
                 triangle.Position = transform.SetLocation(Engine.window.Size, locationPresets, null);
+
             }
 
             once = false;
@@ -88,6 +89,11 @@ public class Sketch
         triangle.Origin = new Vector2f(triangle.Radius, triangle.Radius);
         if (Engine.window != null)
             Engine.window.Draw(triangle);
+    }
+    public void Outline(Shape shape, Color? color = null, float thinkness = 1f)
+    {
+        shape.OutlineColor = color ?? Color.Black;
+        shape.OutlineThickness = thinkness;
     }
     public Vector2f SetOrigin(Vector2f SpriteSize, Origin origin = Origin.Center)
     {

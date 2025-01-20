@@ -10,10 +10,13 @@ public class Scene
     public void Game()
     {
         sketch.Square(Color.Green);
-        sketch2.Triangle(Color.Black);
-        sketch2.Circle(Color.Blue,Vector2.Quater);
+        sketch2.Triangle(Color.Yellow);
         sketch3.Circle(Color.Red);
-        sketch3.Square(Color.White,Vector2.Quater);
+        sketch.Outline(sketch.square, Color.Black, 5f);
+        sketch2.Outline(sketch2.triangle, Color.Black, 5f);
+        sketch3.Outline(sketch3.circle, Color.Black, 5f);
+        sketch3.Square(Color.White, Vector2.Quater);
+        sketch2.Circle(Color.Black, Vector2.Quater);
         sketch.transform.Location = new Vector2f(440, 360);
         sketch2.transform.Location = new Vector2f(640, 360);
         sketch3.transform.Location = new Vector2f(840, 360);

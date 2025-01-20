@@ -17,9 +17,7 @@ public class Transform
         }
 
         uint centerX = (uint)windowSize.X / 2;
-        Console.WriteLine(centerX);
         uint centerY = (uint)windowSize.Y / 2;
-        Console.WriteLine(centerY);
 
         switch (locationPreset)
         {
