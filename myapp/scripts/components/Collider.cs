@@ -1,62 +1,87 @@
 using SFML.Graphics;
 using SFML.System;
 using System;
+using System.Collections.Generic;
 
 public class Collider
 {
-    public static bool IsColliding(FloatRect rect1, FloatRect rect2)
-    {
-        return rect1.Intersects(rect2);
-    }
-    public static bool IsColliding(Vector2f center1, float radius1, Vector2f center2, float radius2)
-    {
-        float dx = center2.X - center1.X;
-        float dy = center2.Y - center1.Y;
-        float distanceSquared = dx * dx + dy * dy;
-        float radiusSum = radius1 + radius2;
+    public Vector2f[] Vertices { get; private set; }
 
-        return distanceSquared <= radiusSum * radiusSum;
-    }
-    public static bool IsPointInsideRect(Vector2f point, FloatRect rect)
+    public Collider(Vector2f[] vertices)
     {
-        return rect.Contains(point.X, point.Y);
-    }
-    public static bool IsPointInsideCircle(Vector2f point, Vector2f center, float radius)
-    {
-        float dx = point.X - center.X;
-        float dy = point.Y - center.Y;
-        float distanceSquared = dx * dx + dy * dy;
+        if (vertices.Length < 3)
+            throw new ArgumentException("A collider must have at least three vertices.");
 
-        return distanceSquared <= radius * radius;
+        Vertices = vertices;
     }
 
-    public static bool IsColliding(FloatRect rect, Vector2f circleCenter, float circleRadius)
+    public bool IsColliding(Collider other)
     {
+        if (CheckSeparatingAxis(this, other))
+            return false;
 
-        float closestX = Math.Clamp(circleCenter.X, rect.Left, rect.Left + rect.Width);
-        float closestY = Math.Clamp(circleCenter.Y, rect.Top, rect.Top + rect.Height);
+        if (CheckSeparatingAxis(other, this))
+            return false;
 
-        float dx = circleCenter.X - closestX;
-        float dy = circleCenter.Y - closestY;
-
-        return (dx * dx + dy * dy) <= (circleRadius * circleRadius);
+        return true;
     }
 
-    public static Vector2f ResolveCollision(FloatRect rect1, FloatRect rect2)
+    private static bool CheckSeparatingAxis(Collider colliderA, Collider colliderB)
     {
-        if (!IsColliding(rect1, rect2))
-            return new Vector2f(0, 0);
-
-        float overlapX = Math.Min(rect1.Left + rect1.Width - rect2.Left, rect2.Left + rect2.Width - rect1.Left);
-        float overlapY = Math.Min(rect1.Top + rect1.Height - rect2.Top, rect2.Top + rect2.Height - rect1.Top);
-
-        if (overlapX < overlapY)
+        foreach (var edge in GetEdges(colliderA.Vertices))
         {
-            return new Vector2f(rect1.Left < rect2.Left ? -overlapX : overlapX, 0);
+            Vector2f axis = GetPerpendicular(edge);
+
+            var projectionA = ProjectOntoAxis(colliderA.Vertices, axis);
+            var projectionB = ProjectOntoAxis(colliderB.Vertices, axis);
+
+            if (!ProjectionsOverlap(projectionA, projectionB))
+                return true;
         }
-        else
+
+        return false;
+    }
+
+    private static IEnumerable<Vector2f> GetEdges(Vector2f[] vertices)
+    {
+        for (int i = 0; i < vertices.Length; i++)
         {
-            return new Vector2f(0, rect1.Top < rect2.Top ? -overlapY : overlapY);
+            Vector2f start = vertices[i];
+            Vector2f end = vertices[(i + 1) % vertices.Length];
+            yield return new Vector2f(end.X - start.X, end.Y - start.Y);
         }
+    }
+
+    private static Vector2f GetPerpendicular(Vector2f edge)
+    {
+        return new Vector2f(-edge.Y, edge.X);
+    }
+
+    private static (float Min, float Max) ProjectOntoAxis(Vector2f[] vertices, Vector2f axis)
+    {
+        float min = DotProduct(vertices[0], axis);
+        float max = min;
+
+        for (int i = 1; i < vertices.Length; i++)
+        {
+            float projection = DotProduct(vertices[i], axis);
+
+            if (projection < min)
+                min = projection;
+            if (projection > max)
+                max = projection;
+        }
+
+        return (min, max);
+    }
+
+    private static bool ProjectionsOverlap((float Min, float Max) projectionA, (float Min, float Max) projectionB)
+    {
+        return !(projectionA.Max < projectionB.Min || projectionB.Max < projectionA.Min);
+    }
+
+    private static float DotProduct(Vector2f vectorA, Vector2f vectorB)
+    {
+        return vectorA.X * vectorB.X + vectorA.Y * vectorB.Y;
     }
 }
