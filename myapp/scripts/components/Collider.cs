@@ -4,29 +4,59 @@ using System;
 
 public class Collider
 {
-    public bool CheckCollision(RectangleShape rect1, RectangleShape rect2)
+    public static bool IsColliding(FloatRect rect1, FloatRect rect2)
     {
-        FloatRect bounds1 = rect1.GetGlobalBounds();
-        FloatRect bounds2 = rect2.GetGlobalBounds();
-        return bounds1.Intersects(bounds2);
+        return rect1.Intersects(rect2);
     }
-    public bool CheckCollision(CircleShape circle1, CircleShape circle2)
+    public static bool IsColliding(Vector2f center1, float radius1, Vector2f center2, float radius2)
     {
-        Vector2f delta = circle1.Position - circle2.Position;
-        float distance = MathF.Sqrt(delta.X * delta.X + delta.Y * delta.Y);
-        return distance <= (circle1.Radius + circle2.Radius);
+        float dx = center2.X - center1.X;
+        float dy = center2.Y - center1.Y;
+        float distanceSquared = dx * dx + dy * dy;
+        float radiusSum = radius1 + radius2;
+
+        return distanceSquared <= radiusSum * radiusSum;
     }
-    public bool CheckCollision(RectangleShape rect, CircleShape circle)
+    public static bool IsPointInsideRect(Vector2f point, FloatRect rect)
     {
-        FloatRect rectBounds = rect.GetGlobalBounds();
-        Vector2f circleCenter = circle.Position + new Vector2f(circle.Radius, circle.Radius);
+        return rect.Contains(point.X, point.Y);
+    }
+    public static bool IsPointInsideCircle(Vector2f point, Vector2f center, float radius)
+    {
+        float dx = point.X - center.X;
+        float dy = point.Y - center.Y;
+        float distanceSquared = dx * dx + dy * dy;
 
-        float closestX = MathF.Max(rectBounds.Left, MathF.Min(circleCenter.X, rectBounds.Left + rectBounds.Width));
-        float closestY = MathF.Max(rectBounds.Top, MathF.Min(circleCenter.Y, rectBounds.Top + rectBounds.Height));
+        return distanceSquared <= radius * radius;
+    }
 
-        float deltaX = circleCenter.X - closestX;
-        float deltaY = circleCenter.Y - closestY;
+    public static bool IsColliding(FloatRect rect, Vector2f circleCenter, float circleRadius)
+    {
 
-        return (deltaX * deltaX + deltaY * deltaY) <= (circle.Radius * circle.Radius);
+        float closestX = Math.Clamp(circleCenter.X, rect.Left, rect.Left + rect.Width);
+        float closestY = Math.Clamp(circleCenter.Y, rect.Top, rect.Top + rect.Height);
+
+        float dx = circleCenter.X - closestX;
+        float dy = circleCenter.Y - closestY;
+
+        return (dx * dx + dy * dy) <= (circleRadius * circleRadius);
+    }
+
+    public static Vector2f ResolveCollision(FloatRect rect1, FloatRect rect2)
+    {
+        if (!IsColliding(rect1, rect2))
+            return new Vector2f(0, 0);
+
+        float overlapX = Math.Min(rect1.Left + rect1.Width - rect2.Left, rect2.Left + rect2.Width - rect1.Left);
+        float overlapY = Math.Min(rect1.Top + rect1.Height - rect2.Top, rect2.Top + rect2.Height - rect1.Top);
+
+        if (overlapX < overlapY)
+        {
+            return new Vector2f(rect1.Left < rect2.Left ? -overlapX : overlapX, 0);
+        }
+        else
+        {
+            return new Vector2f(0, rect1.Top < rect2.Top ? -overlapY : overlapY);
+        }
     }
 }
