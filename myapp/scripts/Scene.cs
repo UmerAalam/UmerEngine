@@ -21,5 +21,8 @@ public class Scene
         {
             Console.WriteLine("No Collision!");
         }
+        // sketch.Triangle(Color.Yellow, Vector2.Half, Transform.LocationPresets.Center);
+        // sketch2.Circle(Color.Cyan, Vector2.Half, Transform.LocationPresets.Center);
+        // sketch2.transform.Location = new Vector2f(840, 360);
     }
 }
