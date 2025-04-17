@@ -1,4 +1,6 @@
-﻿class Program 
+﻿using SFML.Graphics;
+
+class Program 
 {
     static void Main()
     {
