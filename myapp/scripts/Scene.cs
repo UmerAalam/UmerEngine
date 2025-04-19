@@ -6,10 +6,10 @@ public class Scene
 {
     private Sketch sketch = new Sketch();
     private Sketch sketch2 = new Sketch();
-    public Collider collider = new Collider(new Vector2f[] { new Vector2f(0, 0), new Vector2f(100, 0), new Vector2f(100, 100), new Vector2f(0, 100) });
+    public SATCollision collider = new SATCollision(new Vector2f[] { new Vector2f(0, 0), new Vector2f(100, 0), new Vector2f(100, 100), new Vector2f(0, 100) });
     public void Game()
     {
-        sketch.Square(Color.Green,Vector2.Half);
+        sketch.Square(Color.Green, Vector2.Half);
         sketch.transform.Move(moveSpeed: 3f);
         sketch2.Circle(Color.Red);
         sketch2.transform.Location = new Vector2f(840, 360);

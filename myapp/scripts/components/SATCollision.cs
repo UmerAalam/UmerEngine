@@ -7,7 +7,7 @@ public class SATCollision
 {
     public Vector2f[] Vertices { get; private set; }
 
-    public Collider(Vector2f[] vertices)
+    public SATCollision(Vector2f[] vertices)
     {
         if (vertices.Length < 3)
             throw new ArgumentException("A collider must have at least three vertices.");
@@ -16,7 +16,7 @@ public class SATCollision
     }
 
     // Main SAT collision check
-    public bool IsColliding(Collider other)
+    public bool IsColliding(SATCollision other)
     {
         // Check all axes from this collider
         foreach (var axis in GetAxes(this.Vertices))
@@ -63,7 +63,7 @@ public class SATCollision
     }
 
     // Check if projections overlap on a specific axis
-    private bool OverlapOnAxis(Collider other, Vector2f axis)
+    private bool OverlapOnAxis(SATCollision other, Vector2f axis)
     {
         Projection proj1 = Project(axis);
         Projection proj2 = other.Project(axis);

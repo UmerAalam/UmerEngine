@@ -36,7 +36,7 @@ public class Sketch
         FillColor = Color.White,
     };
 
-    public Collider? Collider { get; private set; }
+    public SATCollision? Collider { get; private set; }
 
     public void Square(Color? color = null, Vector2f? Scale = null, Transform.LocationPresets locationPresets = Transform.LocationPresets.Center)
     {
@@ -139,7 +139,7 @@ public class Sketch
             new Vector2f(bounds.Left, bounds.Top + bounds.Height)
         };
 
-        Collider = new Collider(vertices);
+        Collider = new SATCollision(vertices);
     }
 
     public enum Origin
