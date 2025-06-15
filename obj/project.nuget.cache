@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "g3PSAofVtec=",
+  "dgSpecHash": "1mgx0KnhtXc=",
   "success": true,
-  "projectFilePath": "/home/umeraalam/Documents/Engine/UmerEngine/myapp.csproj",
+  "projectFilePath": "/home/umeraalam/Documents/Engine/UmerEngine/umer-engine.csproj",
   "expectedPackageFiles": [
     "/home/umeraalam/.nuget/packages/csfml/2.6.1/csfml.2.6.1.nupkg.sha512",
     "/home/umeraalam/.nuget/packages/sfml.audio/2.6.0/sfml.audio.2.6.0.nupkg.sha512",
