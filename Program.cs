@@ -1,9 +1,10 @@
 ﻿using SFML.Graphics;
 
-class Program 
+class Program
 {
+    static string name = "Umer Engine";
     static void Main()
     {
-        Engine.Evoke(1280, 720,"UMER Engine",60);
+        Engine.Evoke(1280, 720, name, 60);
     }
 }

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("umer-engine")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9e832fc06ff0060674e32089a143c150abeb4f41")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+36470bf9a4d34a46073eb0a867999a6d55ff686d")]
 [assembly: System.Reflection.AssemblyProductAttribute("umer-engine")]
 [assembly: System.Reflection.AssemblyTitleAttribute("umer-engine")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
